@@ -52,3 +52,20 @@ class Grid:
             return None
         index = random.randint(0,len(emptyLocs))
         return emptyLocs[index]
+
+    def getSurf(self,res):
+        pxsize = (self.size[0]*res, self.size[1]*res)
+        surf = pg.Surface(pxsize)
+
+        for row in self.grid:
+            for animal in row:
+                if animal == None:
+                    continue
+                asurf = pg.Surface((res,res))
+                asurf.fill(animal.getColor())
+                pxloc = animal.getPos()
+                pxloc = (pxloc[0]*res,pxloc[1]*res)
+                surf.blit(asurf,pxloc)
+
+
+        return surf

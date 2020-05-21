@@ -28,8 +28,6 @@ print()
 r.move()
 grid.print()
 
-
-
 paused = False
 running = True
 while running:
@@ -44,4 +42,7 @@ while running:
                 running = False
             if event.key == pg.K_SPACE:
                 paused = not paused
-            
+            if event.key == pg.K_s:
+                r.move()
+    screen.blit(grid.getSurf(res),(0,0))
+    pg.display.update()
