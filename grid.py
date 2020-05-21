@@ -73,8 +73,11 @@ class Grid:
         return surf
 
     def step(self):
+        animals = []
         for row in self.grid:
             for animal in row:
                 if animal == None:
                     continue
-                animal.move()
+                animals.append(animal)
+        for an in animals:
+            an.move()

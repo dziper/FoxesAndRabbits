@@ -23,10 +23,6 @@ clock = pg.time.Clock()
 grid = g.Grid(size)
 
 r = rabbit.Rabbit((1,5),grid)
-grid.print()
-print()
-r.move()
-grid.print()
 
 paused = True
 running = True
