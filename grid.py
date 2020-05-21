@@ -1,4 +1,5 @@
-
+import pygame as pg
+import random
 class Grid:
     size = (None, None)
     grid = []
@@ -40,10 +41,14 @@ class Grid:
         return False
 
     def getAdjacentEmpty(self,pos):
+        emptyLocs = []
         for i in range(pos[1]-1,pos[1]+2):
             for j in range(pos[0]-1,pos[0]+2):
                 if self.isInvalidPos((i,j)) or pos == (i,j):
                     continue
                 if self.grid[i][j] == None:
-                    return (j,i)
-        return None
+                    emptyLocs.append((j,i))
+        if len(emptyLocs) == 0:
+            return None
+        index = random.randint(0,len(emptyLocs))
+        return emptyLocs[index]
