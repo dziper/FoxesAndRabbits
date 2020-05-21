@@ -18,13 +18,15 @@ screen = pg.display.set_mode(size)
 pg.display.set_caption('Foxes and Rabbits')
 clock = pg.time.Clock()
 
-
+paused = False
 running = True
 while running:
     screen.fill((0,0,0))
-
+    clock.tick(fps)
+    
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
         elif event.type == pg.KEYDOWN:
-            pass
+            if event.key = pg.K_SPACE:
+                paused = !paused
