@@ -19,6 +19,9 @@ class Grid:
             print(row)
 
     def add(self,animal):
-        pos = animal.getLoc()
+        pos = animal.getPos()
         self.grid[pos[0]][pos[1]] = animal
-        
+
+    def remove(self,animal):
+        pos = animal.getPos()
+        self.grid[pos[0]][pos[1]] = None
