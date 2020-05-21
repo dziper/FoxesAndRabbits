@@ -13,7 +13,7 @@ class Rabbit:
         self.age = 0
 
     def move(self):
-        if self.age >= self.MAX_AGE:
+        if self.age >= self.MAX_AGE or self.dying:
             self.die()
             return
         if self.age >= self.BREEDING_AGE:
@@ -29,6 +29,13 @@ class Rabbit:
             self.pos = newPos
             self.grid.add(self)
 
+    def think(self):
+        newPos = self.grid.getAdjacentEmpty(self.pos)
+        if newPos == None:
+            self.dying = True
+        else:
+            self.dying = False
+        
     def getPos(self):
         return self.pos
 

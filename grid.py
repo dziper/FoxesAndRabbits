@@ -80,4 +80,6 @@ class Grid:
                     continue
                 animals.append(animal)
         for an in animals:
+            an.think()
+        for an in animals:
             an.move()
