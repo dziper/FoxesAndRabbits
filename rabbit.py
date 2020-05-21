@@ -1,6 +1,6 @@
 class Rabbit:
     MAX_AGE = 4
-    NAME = "Rabbit"
+    NAME = "R"
     BREEDING_AGE = 3
 
     def __init__(self,pos,grid):
@@ -10,11 +10,11 @@ class Rabbit:
         self.age = 0
 
     def move(self):
-        if self.age >= MAX_AGE:
+        if self.age >= self.MAX_AGE:
             self.die()
             return
-        if self.age >= BREEDING_AGE:
-            self.giveBirth() 
+        if self.age >= self.BREEDING_AGE:
+            self.giveBirth()
         self.age += 1
         newPos = self.grid.getAdjacentEmpty(self.pos)
         if newPos == None:
@@ -31,7 +31,7 @@ class Rabbit:
         self.grid.remove(self)
 
     def getName(self):
-        return NAME
+        return self.NAME
 
     def giveBirth(self):
         newPos = self.grid.getAdjacentEmpty(self.pos)

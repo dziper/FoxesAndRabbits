@@ -2,10 +2,11 @@ import pygame as pg
 import random
 import copy
 import grid as g
+import rabbit
 
 res = 20
 w = 16
-h = 16
+h = 10
 size = (w,h)
 
 pxw = w * res
@@ -20,7 +21,14 @@ pg.display.set_caption('Foxes and Rabbits')
 clock = pg.time.Clock()
 
 grid = g.Grid(size)
+
+r = rabbit.Rabbit((1,5),grid)
 grid.print()
+print()
+r.move()
+grid.print()
+
+
 
 paused = False
 running = True
@@ -36,3 +44,4 @@ while running:
                 running = False
             if event.key == pg.K_SPACE:
                 paused = not paused
+            
