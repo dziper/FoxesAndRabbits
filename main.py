@@ -43,6 +43,7 @@ while running:
             if event.key == pg.K_SPACE:
                 paused = not paused
             if event.key == pg.K_s:
-                r.move()
+                if paused:
+                    grid.step()
     screen.blit(grid.getSurf(res),(0,0))
     pg.display.update()

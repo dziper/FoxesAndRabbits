@@ -40,6 +40,7 @@ class Rabbit:
             return
         baby = Rabbit(newPos,self.grid)
         baby.grid.add(baby)
+        
 
     def getColor(self):
         return self.COLOR

@@ -15,6 +15,9 @@ class Grid:
             emptyGrid[i] = row
         return emptyGrid
 
+    def initializeAnimals(self):
+        pass
+
     def print(self):
         for row in self.grid:
             rowStr = ''
@@ -67,5 +70,7 @@ class Grid:
                 pxloc = (pxloc[0]*res,pxloc[1]*res)
                 surf.blit(asurf,pxloc)
 
-
         return surf
+
+    def step(self): 
+        pass
