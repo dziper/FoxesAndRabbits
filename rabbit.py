@@ -1,5 +1,5 @@
 class Rabbit:
-    MAX_AGE = 4
+    MAX_AGE = 10
     NAME = "R"
     BREEDING_AGE = 3
     COLOR = (200,200,0)
@@ -40,7 +40,7 @@ class Rabbit:
             return
         baby = Rabbit(newPos,self.grid)
         baby.grid.add(baby)
-        
+
 
     def getColor(self):
         return self.COLOR

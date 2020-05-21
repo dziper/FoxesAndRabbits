@@ -37,9 +37,9 @@ class Grid:
         self.grid[pos[1]][pos[0]] = None
 
     def isInvalidPos(self,pos):
-        if pos[0]<0 or pos[0]>self.size[0]:
+        if pos[0]<0 or pos[0]>self.size[0]-1:
             return True
-        if pos[1]<0 or pos[1]>self.size[1]:
+        if pos[1]<0 or pos[1]>self.size[1]-1:
             return True
         return False
 
@@ -47,13 +47,13 @@ class Grid:
         emptyLocs = []
         for i in range(pos[1]-1,pos[1]+2):
             for j in range(pos[0]-1,pos[0]+2):
-                if self.isInvalidPos((i,j)) or pos == (i,j):
+                if self.isInvalidPos((j,i)) or pos == (i,j):
                     continue
                 if self.grid[i][j] == None:
                     emptyLocs.append((j,i))
         if len(emptyLocs) == 0:
             return None
-        index = random.randint(0,len(emptyLocs))
+        index = random.randint(0,len(emptyLocs)-1)
         return emptyLocs[index]
 
     def getSurf(self,res):
@@ -72,5 +72,9 @@ class Grid:
 
         return surf
 
-    def step(self): 
-        pass
+    def step(self):
+        for row in self.grid:
+            for animal in row:
+                if animal == None:
+                    continue
+                animal.move()
