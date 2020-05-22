@@ -23,8 +23,7 @@ clock = pg.time.Clock()
 
 grid = g.Grid(size)
 
-r = rabbit.Rabbit((1,5),grid)
-f = fox.Fox((10,5),grid)
+grid.initializeAnimals()
 
 paused = True
 running = True
