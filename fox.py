@@ -3,7 +3,8 @@ class Fox:
     MAX_AGE = 10
     NAME = "F"
     BREEDING_AGE = 5
-    BREEDING_PROB= .4
+    BREEDING_PROB = .4
+    MAX_HUNGER = 3
     COLOR = (0,0,200)
 
     def __init__(self,pos,grid):
@@ -11,30 +12,21 @@ class Fox:
         self.grid = grid
         self.grid.add(self)
         self.age = 0
+        self.hunger = MAX_HUNGER
 
     def move(self):
-        if self.age >= self.MAX_AGE or self.dying:
-            self.die()
-            return
-        if self.age >= self.BREEDING_AGE:
-            print("birthing",self.age)
-            self.giveBirth()
-        self.age += 1
-        newPos = self.grid.getAdjacentEmpty(self.pos)
-        if newPos == None:
-            print("crowded")
-            self.die()
-        else:
-            self.grid.remove(self)
-            self.pos = newPos
-            self.grid.add(self)
+        pass
+        #Hunt or Move the Fox to an adjacent empty location
+        #increment age, hunger, die if too old, hungry, or crowded
+        #give birth if of age
 
-    def think(self):
-        newPos = self.grid.getAdjacentEmpty(self.pos)
-        if newPos == None:
-            self.dying = True
-        else:
-            self.dying = False
+    def hunt(self):
+        pass
+        #find a rabbit and kill it >;)
+
+    def giveBirth(self):
+        pass
+        #Give birth to a baby fox in adj empt loc,
 
     def getPos(self):
         return self.pos
@@ -45,12 +37,8 @@ class Fox:
     def getName(self):
         return self.NAME
 
-    def giveBirth(self):
-        if random.random()<self.BREEDING_PROB:
-            newPos = self.grid.getAdjacentEmpty(self.pos)
-            if newPos == None:
-                return
-            baby = Fox(newPos,self.grid)
-
     def getColor(self):
         return self.COLOR
+
+    def think(self):
+        pass
