@@ -14,13 +14,13 @@ class Rabbit:
 
     def move(self):
         pass
-        #Hunt or Move the Rabbit to an adjacent empty location
+        #Move the Rabbit to an adjacent empty location
         #increment age, die if too old, or crowded
         #give birth if of age
 
     def giveBirth(self):
         pass
-        #Give birth to a baby fox in adj empt loc
+        #Give birth to a baby rabbit in adj empt loc
 
     def getPos(self):
         return self.pos

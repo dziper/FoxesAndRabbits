@@ -1,5 +1,6 @@
 import pygame as pg
 import random
+import rabbit, fox
 class Grid:
     size = (None, None)
     grid = []
@@ -18,7 +19,10 @@ class Grid:
         #if multiple, return random one
 
     def initializeAnimals(self):
-        pass
+        x = random.randint(0,self.size[0])
+        y = random.randint(0,self.size[1])
+        pos=(x,y)
+        r = rabbit.Rabbit(pos, self)
         #Add foxes and rabbits to grid randomly
 
     def getAdjacentEmpty(self,pos):

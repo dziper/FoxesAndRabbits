@@ -21,9 +21,9 @@ screen = pg.display.set_mode(pxsize)
 pg.display.set_caption('Foxes and Rabbits')
 clock = pg.time.Clock()
 
-grid = g.Grid(size)
+myGrid = g.Grid(size)
 
-grid.initializeAnimals()
+myGrid.initializeAnimals()
 
 paused = True
 running = True
@@ -41,8 +41,8 @@ while running:
                 paused = not paused
             if event.key == pg.K_s:
                 if paused:
-                    grid.step()
+                    myGrid.step()
     if not paused:
-        grid.step()
-    screen.blit(grid.getSurf(res),(0,0))
+        myGrid.step()
+    screen.blit(myGrid.getSurf(res),(0,0))
     pg.display.update()
