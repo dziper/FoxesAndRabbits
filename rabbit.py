@@ -13,26 +13,14 @@ class Rabbit:
         self.age = 0
 
     def move(self):
-        if self.age >= self.MAX_AGE or self.dying:
-            self.die()
-            return
-        if self.age >= self.BREEDING_AGE:
-            self.giveBirth()
-        self.age += 1
-        newPos = self.grid.getAdjacentEmpty(self.pos)
-        if newPos == None:
-            self.die()
-        else:
-            self.grid.remove(self)
-            self.pos = newPos
-            self.grid.add(self)
+        pass
+        #Hunt or Move the Rabbit to an adjacent empty location
+        #increment age, die if too old, or crowded
+        #give birth if of age
 
-    def think(self):
-        newPos = self.grid.getAdjacentEmpty(self.pos)
-        if newPos == None:
-            self.dying = True
-        else:
-            self.dying = False
+    def giveBirth(self):
+        pass
+        #Give birth to a baby fox in adj empt loc
 
     def getPos(self):
         return self.pos
@@ -43,12 +31,8 @@ class Rabbit:
     def getName(self):
         return self.NAME
 
-    def giveBirth(self):
-        if random.random()<self.BREEDING_PROB:
-            newPos = self.grid.getAdjacentEmpty(self.pos)
-            if newPos == None:
-                return
-            baby = Rabbit(newPos,self.grid)
-
     def getColor(self):
         return self.COLOR
+
+    def think(self):
+        pass
