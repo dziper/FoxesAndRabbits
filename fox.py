@@ -26,7 +26,7 @@ class Fox:
 
     def giveBirth(self):
         pass
-        #Give birth to a baby fox in adj empt loc,
+        #Give birth to a baby fox in adj empt loc
 
     def getPos(self):
         return self.pos
