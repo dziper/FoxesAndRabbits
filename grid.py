@@ -8,15 +8,30 @@ class Grid:
         self.size = size
         self.grid = self.getEmpty()
 
+    def step(self):
+        pass
+        #move all the animals on the grid
+
+    def getAdjacentRabbit(self,pos):
+        pass
+        #find an adjacent rabbit
+        #if multiple, return random one
+
+    def initializeAnimals(self):
+        pass
+        #Add foxes and rabbits to grid randomly
+
+    def getAdjacentEmpty(self,pos):
+        pass
+        #find an adjacent empty location
+        #if multiple, return random one
+
     def getEmpty(self):
         emptyGrid = [None]*self.size[1]
         for i in range(len(emptyGrid)):
             row = [None]*self.size[0]
             emptyGrid[i] = row
         return emptyGrid
-
-    def initializeAnimals(self):
-        pass
 
     def print(self):
         for row in self.grid:
@@ -43,19 +58,6 @@ class Grid:
             return True
         return False
 
-    def getAdjacentEmpty(self,pos):
-        emptyLocs = []
-        for i in range(pos[1]-1,pos[1]+2):
-            for j in range(pos[0]-1,pos[0]+2):
-                if self.isInvalidPos((j,i)) or pos == (i,j):
-                    continue
-                if self.grid[i][j] == None:
-                    emptyLocs.append((j,i))
-        if len(emptyLocs) == 0:
-            return None
-        index = random.randint(0,len(emptyLocs)-1)
-        return emptyLocs[index]
-
     def getSurf(self,res):
         pxsize = (self.size[0]*res, self.size[1]*res)
         surf = pg.Surface(pxsize)
@@ -71,15 +73,3 @@ class Grid:
                 surf.blit(asurf,pxloc)
 
         return surf
-
-    def step(self):
-        animals = []
-        for row in self.grid:
-            for animal in row:
-                if animal == None:
-                    continue
-                animals.append(animal)
-        for an in animals:
-            an.think()
-        for an in animals:
-            an.move()
