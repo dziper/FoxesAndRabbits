@@ -17,12 +17,10 @@ class Fox:
             self.die()
             return
         if self.age >= self.BREEDING_AGE:
-            print("birthing",self.age)
             self.giveBirth()
         self.age += 1
         newPos = self.grid.getAdjacentEmpty(self.pos)
         if newPos == None:
-            print("crowded")
             self.die()
         else:
             self.grid.remove(self)
