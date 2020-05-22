@@ -1,10 +1,10 @@
 import random
-class Rabbit:
+class Fox:
     MAX_AGE = 10
-    NAME = "R"
+    NAME = "F"
     BREEDING_AGE = 5
     BREEDING_PROB= .4
-    COLOR = (200,200,0)
+    COLOR = (0,0,200)
 
     def __init__(self,pos,grid):
         self.pos = pos
@@ -17,10 +17,12 @@ class Rabbit:
             self.die()
             return
         if self.age >= self.BREEDING_AGE:
+            print("birthing",self.age)
             self.giveBirth()
         self.age += 1
         newPos = self.grid.getAdjacentEmpty(self.pos)
         if newPos == None:
+            print("crowded")
             self.die()
         else:
             self.grid.remove(self)
@@ -48,7 +50,7 @@ class Rabbit:
             newPos = self.grid.getAdjacentEmpty(self.pos)
             if newPos == None:
                 return
-            baby = Rabbit(newPos,self.grid)
+            baby = Fox(newPos,self.grid)
 
     def getColor(self):
         return self.COLOR
