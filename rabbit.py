@@ -16,7 +16,6 @@ class Rabbit:
         self.grid.remove(self)
         self.pos = self.grid.getAdjacentEmpty(self.pos)
         self.grid.add(self)
-
         self.age=self.age+1
         if self.age == self.MAX_AGE:
             self.die()
@@ -26,6 +25,7 @@ class Rabbit:
     def giveBirth(self):
         if random.random() < self.BREEDING_PROB:
             pass
+            #HOMEWORK
             #Give birth to a baby rabbit in adj empt loc
 
     def getPos(self):
