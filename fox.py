@@ -12,7 +12,7 @@ class Fox:
         self.grid = grid
         self.grid.add(self)
         self.age = 0
-        self.hunger = MAX_HUNGER
+        self.hunger = self.MAX_HUNGER
 
     def move(self):
         pass

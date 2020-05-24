@@ -20,14 +20,16 @@ class Grid:
 
     def initializeAnimals(self, fx=5, rb=10):
         for z in range(rb):
-            x = random.randint(0,self.size[0])
-            y = random.randint(0,self.size[1])
+            x = random.randint(0,self.size[0]-1)
+            y = random.randint(0,self.size[1]-1)
             pos=(x,y)
+            print(pos)
             r = rabbit.Rabbit(pos, self)
-        for a in range(rb):
-            b = random.randint(0,self.size[0])
-            c = random.randint(0,self.size[1])
+        for a in range(fx):
+            b = random.randint(0,self.size[0]-1)
+            c = random.randint(0,self.size[1]-1)
             pos=(b,c)
+
             f = fox.Fox(pos, self)
 
         #HW:create 10 random rabbits and 5 foxes randomly
