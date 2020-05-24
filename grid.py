@@ -42,8 +42,8 @@ class Grid:
                 if self.getPos((x,y))== None:
                     empty.append((x,y))
         length=len(empty)
-        return empty[random.randint(length)]
-                
+        return empty[random.randint(length-1)]
+
         #find an adjacent empty location
         #if multiple, return random one
 
