@@ -18,11 +18,19 @@ class Grid:
         #find an adjacent rabbit
         #if multiple, return random one
 
-    def initializeAnimals(self):
-        x = random.randint(0,self.size[0])
-        y = random.randint(0,self.size[1])
-        pos=(x,y)
-        r = rabbit.Rabbit(pos, self)
+    def initializeAnimals(self, fx=5, rb=10):
+        for z in range(rb):
+            x = random.randint(0,self.size[0])
+            y = random.randint(0,self.size[1])
+            pos=(x,y)
+            r = rabbit.Rabbit(pos, self)
+        for a in range(rb):
+            b = random.randint(0,self.size[0])
+            c = random.randint(0,self.size[1])
+            pos=(b,c)
+            f = fox.Fox(pos, self)
+
+        #HW:create 10 random rabbits and 5 foxes randomly
         #Add foxes and rabbits to grid randomly
 
     def getAdjacentEmpty(self,pos):
