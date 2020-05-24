@@ -10,7 +10,11 @@ class Grid:
         self.grid = self.getEmpty()
 
     def step(self):
-        pass
+        for x in range(self.size[0]):
+            for y in range(self.size[1]):
+                animal = self.getPos((x,y))
+                if animal != None:
+                    animal.move()
         #move all the animals on the grid
 
     def getAdjacentRabbit(self,pos):
@@ -39,10 +43,14 @@ class Grid:
         empty=[]
         for x in range(pos[0]-1, pos[0]+2):
             for y in range(pos[1]-1, pos[1]+2):
+                if pos==(x,y):
+                    continue
+                if self.isInvalidPos((x,y)):
+                    continue
                 if self.getPos((x,y))== None:
                     empty.append((x,y))
         length=len(empty)
-        return empty[random.randint(length-1)]
+        return empty[random.randint(0,length-1)]
 
         #find an adjacent empty location
         #if multiple, return random one
@@ -96,4 +104,4 @@ class Grid:
         return surf
 
     def getPos(self, pos):
-        return grid[pos[1]][pos[0]]
+        return self.grid[pos[1]][pos[0]]
