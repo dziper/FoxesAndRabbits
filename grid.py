@@ -36,7 +36,14 @@ class Grid:
         #Add foxes and rabbits to grid randomly
 
     def getAdjacentEmpty(self,pos):
-        pass
+        empty=[]
+        for x in range(pos[0]-1, pos[0]+2):
+            for y in range(pos[1]-1, pos[1]+2):
+                if self.getPos((x,y))== None:
+                    empty.append((x,y))
+        length=len(empty)
+        return empty[random.randint(length)]
+                
         #find an adjacent empty location
         #if multiple, return random one
 
@@ -87,3 +94,6 @@ class Grid:
                 surf.blit(asurf,pxloc)
 
         return surf
+
+    def getPos(self, pos):
+        return grid[pos[1]][pos[0]]
