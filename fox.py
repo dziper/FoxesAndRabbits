@@ -3,9 +3,9 @@ class Fox:
     MAX_AGE = 10
     NAME = "F"
     BREEDING_AGE = 5
-    BREEDING_PROB = .4
+    BREEDING_PROB = .6
     MAX_HUNGER = 5
-    COLOR = (0,0,200)
+    COLOR = (200,0,0)
 
     def __init__(self,pos,grid):
         self.pos = pos

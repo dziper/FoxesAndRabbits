@@ -21,7 +21,7 @@ clock = pg.time.Clock()
 
 myGrid = g.Grid(size)
 
-myGrid.initializeAnimals(fx = 200, rb = 200)
+myGrid.initializeAnimals(fx = 200, rb = 200, wl=200)
 
 paused = True
 running = True
