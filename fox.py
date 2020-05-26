@@ -15,17 +15,36 @@ class Fox:
         self.hunger = self.MAX_HUNGER
 
     def move(self):
-        pass
+        self.grid.remove(self)
+        position = self.grid.getAdjacentEmpty(self.pos)
+        if position == None:
+            self.die()
+            return
+        self.pos = position
+        self.grid.add(self)
+        self.age=self.age+1
+        if self.age == self.MAX_AGE:
+            self.die()
+            return
+        if self.age >= self.BREEDING_AGE:
+            self.giveBirth()
+        self.hunt()
+
         #Hunt or Move the Fox to an adjacent empty location
         #increment age, hunger, die if too old, hungry, or crowded
         #give birth if of age
 
     def hunt(self):
-        pass
+        self.grid.getAdjacentRabbit()
         #find a rabbit and kill it >;)
 
     def giveBirth(self):
-        pass
+        if random.random() < self.BREEDING_PROB:
+            position=self.grid.getAdjacentEmpty(self.pos)
+            if position == None:
+                self.die()
+                return
+            f = Fox(position, self.grid)
         #Give birth to a baby fox in adj empt loc
 
     def getPos(self):
