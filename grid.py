@@ -27,7 +27,6 @@ class Grid:
             x = random.randint(0,self.size[0]-1)
             y = random.randint(0,self.size[1]-1)
             pos=(x,y)
-            print(pos)
             r = rabbit.Rabbit(pos, self)
         for a in range(fx):
             b = random.randint(0,self.size[0]-1)
@@ -50,7 +49,10 @@ class Grid:
                 if self.getPos((x,y))== None:
                     empty.append((x,y))
         length=len(empty)
-        return empty[random.randint(0,length-1)]
+        if length >= 1:
+            return empty[random.randint(0,length-1)]
+        else:
+            return None
 
         #find an adjacent empty location
         #if multiple, return random one

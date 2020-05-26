@@ -3,7 +3,7 @@ class Rabbit:
     MAX_AGE = 10
     NAME = "R"
     BREEDING_AGE = 5
-    BREEDING_PROB= .4
+    BREEDING_PROB= .3
     COLOR = (200,200,0)
 
     def __init__(self,pos,grid):
@@ -17,6 +17,9 @@ class Rabbit:
 
         if random.random() < self.BREEDING_PROB:
             position=self.grid.getAdjacentEmpty(self.pos)
+            if position == None:
+                self.die()
+                return
             r = Rabbit(position, self.grid)
 
             #Give birth to a baby rabbit in adj empt loc
@@ -38,11 +41,16 @@ class Rabbit:
 
     def move(self):
         self.grid.remove(self)
-        self.pos = self.grid.getAdjacentEmpty(self.pos)
+        position = self.grid.getAdjacentEmpty(self.pos)
+        if position == None:
+            self.die()
+            return
+        self.pos = position
         self.grid.add(self)
         self.age=self.age+1
         if self.age == self.MAX_AGE:
             self.die()
+            return
         if self.age >= self.BREEDING_AGE:
             self.giveBirth()
         #increment age, die if too old, or crowded
