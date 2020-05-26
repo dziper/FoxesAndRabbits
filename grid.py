@@ -23,7 +23,7 @@ class Grid:
                     animal.move()
         #move all the animals on the grid
 
-    def getAdjacentAnimal(self,pos,name):
+    def getAdjacentAnimal(self,pos,names):
         animals=[]
         for x in range(pos[0]-1, pos[0]+2):
             for y in range(pos[1]-1, pos[1]+2):
@@ -31,10 +31,10 @@ class Grid:
                     continue
                 if self.isInvalidPos((x,y)):
                     continue
-                animals = self.getPos((x,y))
+                animal = self.getPos((x,y))
                 if animal == None:
                     continue
-                if animals.getName() == name:
+                if animal.getName() in names:
                     animals.append(animal)
         length=len(animals)
         if length >= 1:

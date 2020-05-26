@@ -39,7 +39,7 @@ class Fox:
         #give birth if of age
 
     def hunt(self):
-        rb=self.grid.getAdjacentRabbit(self.pos)
+        rb=self.grid.getAdjacentAnimal(self.pos, ['R'])
         if rb != None:
             rb.die()
             self.hunger = 0
