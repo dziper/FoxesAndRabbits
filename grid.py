@@ -23,22 +23,22 @@ class Grid:
                     animal.move()
         #move all the animals on the grid
 
-    def getAdjacentRabbit(self,pos):
-        rabbits=[]
+    def getAdjacentAnimal(self,pos,name):
+        animals=[]
         for x in range(pos[0]-1, pos[0]+2):
             for y in range(pos[1]-1, pos[1]+2):
                 if pos==(x,y):
                     continue
                 if self.isInvalidPos((x,y)):
                     continue
-                animal = self.getPos((x,y))
+                animals = self.getPos((x,y))
                 if animal == None:
                     continue
-                if animal.getName() == 'R':
-                    rabbits.append(animal)
-        length=len(rabbits)
+                if animals.getName() == name:
+                    animals.append(animal)
+        length=len(animals)
         if length >= 1:
-            return rabbits[random.randint(0,length-1)]
+            return animals[random.randint(0,length-1)]
         else:
             return None
 
