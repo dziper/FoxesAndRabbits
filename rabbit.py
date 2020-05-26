@@ -1,21 +1,22 @@
 import random
 class Rabbit:
-    MAX_AGE = 10
+    MAX_AGE = 5
     NAME = "R"
-    BREEDING_AGE = 5
+    BREEDING_AGE = 2
     BREEDING_PROB= .4
-    COLOR = (200,200,0)
+    COLOR = (255,200,0)
 
     def __init__(self,pos,grid):
         self.pos = pos
         self.grid = grid
         self.grid.add(self)
         self.age = 0
+        self.dying = False
 
     def move(self):
         self.grid.remove(self)
         position = self.grid.getAdjacentEmpty(self.pos)
-        if position == None:
+        if position == None or self.dying:
             self.die()
             return
         self.pos = position
@@ -53,4 +54,6 @@ class Rabbit:
         return self.COLOR
 
     def think(self):
-        pass
+        position = self.grid.getAdjacentEmpty(self.pos)
+        if position == None:
+            self.dying = True

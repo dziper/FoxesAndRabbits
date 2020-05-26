@@ -14,24 +14,31 @@ class Grid:
             for y in range(self.size[1]):
                 animal = self.getPos((x,y))
                 if animal != None:
+                    animal.think()
+
+        for x in range(self.size[0]):
+            for y in range(self.size[1]):
+                animal = self.getPos((x,y))
+                if animal != None:
                     animal.move()
         #move all the animals on the grid
 
     def getAdjacentRabbit(self,pos):
-        rabbit=[]
+        rabbits=[]
         for x in range(pos[0]-1, pos[0]+2):
             for y in range(pos[1]-1, pos[1]+2):
                 if pos==(x,y):
                     continue
                 if self.isInvalidPos((x,y)):
                     continue
-                if self.getPos((x,y)) == None:
+                animal = self.getPos((x,y))
+                if animal == None:
                     continue
-                if self.getPos((x,y)).getName() == 'R':
-                    rabbit.append((x,y))
-        length=len(rabbit)
+                if animal.getName() == 'R':
+                    rabbits.append(animal)
+        length=len(rabbits)
         if length >= 1:
-            return rabbit[random.randint(0,length-1)]
+            return rabbits[random.randint(0,length-1)]
         else:
             return None
 

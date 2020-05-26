@@ -2,8 +2,6 @@ import pygame as pg
 import random
 import copy
 import grid as g
-import rabbit
-import fox
 
 res = 5
 w = 100
@@ -23,7 +21,7 @@ clock = pg.time.Clock()
 
 myGrid = g.Grid(size)
 
-myGrid.initializeAnimals()
+myGrid.initializeAnimals(fx = 200, rb = 200)
 
 paused = True
 running = True
