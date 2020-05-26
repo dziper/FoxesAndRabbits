@@ -18,7 +18,23 @@ class Grid:
         #move all the animals on the grid
 
     def getAdjacentRabbit(self,pos):
-        pass
+        rabbit=[]
+        for x in range(pos[0]-1, pos[0]+2):
+            for y in range(pos[1]-1, pos[1]+2):
+                if pos==(x,y):
+                    continue
+                if self.isInvalidPos((x,y)):
+                    continue
+                if self.getPos((x,y)) == None:
+                    continue
+                if self.getPos((x,y)).getName() == 'R':
+                    rabbit.append((x,y))
+        length=len(rabbit)
+        if length >= 1:
+            return rabbit[random.randint(0,length-1)]
+        else:
+            return None
+
         #find an adjacent rabbit
         #if multiple, return random one
 
