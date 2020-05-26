@@ -5,9 +5,9 @@ import grid as g
 import rabbit
 import fox
 
-res = 20
-w = 16
-h = 10
+res = 5
+w = 100
+h = 100
 size = (w,h)
 
 pxw = w * res
