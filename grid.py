@@ -1,5 +1,6 @@
 import pygame as pg
 import random
+import rabbit, fox, wolf, bear, eagle
 class Grid:
     size = (None, None)
     grid = []
@@ -8,15 +9,97 @@ class Grid:
         self.size = size
         self.grid = self.getEmpty()
 
+    def step(self):
+        for x in range(self.size[0]):
+            for y in range(self.size[1]):
+                animal = self.getPos((x,y))
+                if animal != None:
+                    animal.think()
+
+        for x in range(self.size[0]):
+            for y in range(self.size[1]):
+                animal = self.getPos((x,y))
+                if animal != None:
+                    animal.move()
+        #move all the animals on the grid
+
+    def getAdjacentAnimal(self,pos,names):
+        animals=[]
+        for x in range(pos[0]-1, pos[0]+2):
+            for y in range(pos[1]-1, pos[1]+2):
+                if pos==(x,y):
+                    continue
+                if self.isInvalidPos((x,y)):
+                    continue
+                animal = self.getPos((x,y))
+                if animal == None:
+                    continue
+                if animal.getName() in names:
+                    animals.append(animal)
+        length=len(animals)
+        if length >= 1:
+            return animals[random.randint(0,length-1)]
+        else:
+            return None
+
+        #find an adjacent rabbit
+        #if multiple, return random one
+
+    def initializeAnimals(self, fx=5, rb=10, wl=10, br=10, ea=10):
+        for z in range(rb):
+            x = random.randint(0,self.size[0]-1)
+            y = random.randint(0,self.size[1]-1)
+            pos=(x,y)
+            r = rabbit.Rabbit(pos, self)
+        for a in range(fx):
+            b = random.randint(0,self.size[0]-1)
+            c = random.randint(0,self.size[1]-1)
+            pos=(b,c)
+            f=fox.Fox(pos,self)
+        for m in range(fx):
+            n = random.randint(0,self.size[0]-1)
+            o = random.randint(0,self.size[1]-1)
+            pos=(n,o)
+            w = wolf.Wolf(pos, self)
+        for m in range(br):
+            n = random.randint(0,self.size[0]-1)
+            o = random.randint(0,self.size[1]-1)
+            pos=(n,o)
+            b = bear.Bear(pos, self)
+        for m in range(ea):
+            n = random.randint(0,self.size[0]-1)
+            o = random.randint(0,self.size[1]-1)
+            pos=(n,o)
+            ea = eagle.Eagle(pos, self)
+
+        #HW:create 10 random rabbits and 5 foxes randomly
+        #Add foxes and rabbits to grid randomly
+
+    def getAdjacentEmpty(self,pos):
+        empty=[]
+        for x in range(pos[0]-1, pos[0]+2):
+            for y in range(pos[1]-1, pos[1]+2):
+                if pos==(x,y):
+                    continue
+                if self.isInvalidPos((x,y)):
+                    continue
+                if self.getPos((x,y))== None:
+                    empty.append((x,y))
+        length=len(empty)
+        if length >= 1:
+            return empty[random.randint(0,length-1)]
+        else:
+            return None
+
+        #find an adjacent empty location
+        #if multiple, return random one
+
     def getEmpty(self):
         emptyGrid = [None]*self.size[1]
         for i in range(len(emptyGrid)):
             row = [None]*self.size[0]
             emptyGrid[i] = row
         return emptyGrid
-
-    def initializeAnimals(self):
-        pass
 
     def print(self):
         for row in self.grid:
@@ -43,19 +126,6 @@ class Grid:
             return True
         return False
 
-    def getAdjacentEmpty(self,pos):
-        emptyLocs = []
-        for i in range(pos[1]-1,pos[1]+2):
-            for j in range(pos[0]-1,pos[0]+2):
-                if self.isInvalidPos((j,i)) or pos == (i,j):
-                    continue
-                if self.grid[i][j] == None:
-                    emptyLocs.append((j,i))
-        if len(emptyLocs) == 0:
-            return None
-        index = random.randint(0,len(emptyLocs)-1)
-        return emptyLocs[index]
-
     def getSurf(self,res):
         pxsize = (self.size[0]*res, self.size[1]*res)
         surf = pg.Surface(pxsize)
@@ -72,14 +142,5 @@ class Grid:
 
         return surf
 
-    def step(self):
-        animals = []
-        for row in self.grid:
-            for animal in row:
-                if animal == None:
-                    continue
-                animals.append(animal)
-        for an in animals:
-            an.think()
-        for an in animals:
-            an.move()
+    def getPos(self, pos):
+        return self.grid[pos[1]][pos[0]]

@@ -2,12 +2,10 @@ import pygame as pg
 import random
 import copy
 import grid as g
-import rabbit
-import fox
 
-res = 20
-w = 16
-h = 10
+res = 5
+w = 200
+h = 200
 size = (w,h)
 
 pxw = w * res
@@ -15,22 +13,24 @@ pxh = h * res
 
 pxsize = pxw, pxh
 fps = 10
+steps = 0
 
 pg.init()
 screen = pg.display.set_mode(pxsize)
 pg.display.set_caption('Foxes and Rabbits')
 clock = pg.time.Clock()
 
-grid = g.Grid(size)
+myGrid = g.Grid(size)
 
-r = rabbit.Rabbit((1,5),grid)
-f = fox.Fox((10,5),grid)
+myGrid.initializeAnimals(fx = 200, rb = 400, wl=200, br=200, ea=200)
 
 paused = True
 running = True
 while running:
     screen.fill((0,0,0))
     clock.tick(fps)
+    pg.display.set_caption('Foxes and Rabbits   Steps: ' + str(steps))
+
 
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -42,8 +42,12 @@ while running:
                 paused = not paused
             if event.key == pg.K_s:
                 if paused:
-                    grid.step()
+                    myGrid.step()
+                    steps+=1
     if not paused:
-        grid.step()
-    screen.blit(grid.getSurf(res),(0,0))
+        myGrid.step()
+        steps+=1
+    screen.blit(myGrid.getSurf(res),(0,0))
     pg.display.update()
+
+print(steps)
