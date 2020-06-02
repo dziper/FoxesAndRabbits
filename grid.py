@@ -1,6 +1,6 @@
 import pygame as pg
 import random
-import rabbit, fox, wolf
+import rabbit, fox, wolf, bear
 class Grid:
     size = (None, None)
     grid = []
@@ -45,7 +45,7 @@ class Grid:
         #find an adjacent rabbit
         #if multiple, return random one
 
-    def initializeAnimals(self, fx=5, rb=10, wl=10):
+    def initializeAnimals(self, fx=5, rb=10, wl=10, br=10):
         for z in range(rb):
             x = random.randint(0,self.size[0]-1)
             y = random.randint(0,self.size[1]-1)
@@ -61,6 +61,11 @@ class Grid:
             o = random.randint(0,self.size[1]-1)
             pos=(n,o)
             w = wolf.Wolf(pos, self)
+        for m in range(br):
+            n = random.randint(0,self.size[0]-1)
+            o = random.randint(0,self.size[1]-1)
+            pos=(n,o)
+            b = bear.Bear(pos, self)
 
         #HW:create 10 random rabbits and 5 foxes randomly
         #Add foxes and rabbits to grid randomly
