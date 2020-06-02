@@ -9,4 +9,4 @@ class Fox(predator.Predator):
     FOODVALUE= 4
 
     def __init__(self,pos,grid):
-        super().__init__(pos,grid,['R'])
+        super().__init__(pos,grid,['R', 'E'])

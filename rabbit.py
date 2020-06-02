@@ -1,10 +1,10 @@
 import random
 import animal
 class Rabbit(animal.Animal):
-    MAX_AGE = 5
+    MAX_AGE = 6
     NAME = "R"
     BREEDING_AGE = 2
-    BREEDING_PROB= .4
+    BREEDING_PROB= .6
     COLOR = (255,200,0)
     FOODVALUE= 1
 

@@ -2,7 +2,7 @@ import predator
 class Bear(predator.Predator):
     MAX_AGE = 15
     NAME = "B"
-    BREEDING_AGE = 10
+    BREEDING_AGE = 11
     BREEDING_PROB = .5
     MAX_HUNGER = 7
     COLOR = (200,0,220)

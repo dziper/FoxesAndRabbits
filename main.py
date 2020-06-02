@@ -4,8 +4,8 @@ import copy
 import grid as g
 
 res = 5
-w = 100
-h = 100
+w = 200
+h = 200
 size = (w,h)
 
 pxw = w * res
@@ -13,6 +13,7 @@ pxh = h * res
 
 pxsize = pxw, pxh
 fps = 10
+steps = 0
 
 pg.init()
 screen = pg.display.set_mode(pxsize)
@@ -21,13 +22,15 @@ clock = pg.time.Clock()
 
 myGrid = g.Grid(size)
 
-myGrid.initializeAnimals(fx = 200, rb = 200, wl=200, br=200)
+myGrid.initializeAnimals(fx = 200, rb = 400, wl=200, br=200, ea=200)
 
 paused = True
 running = True
 while running:
     screen.fill((0,0,0))
     clock.tick(fps)
+    pg.display.set_caption('Foxes and Rabbits   Steps: ' + str(steps))
+
 
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -40,7 +43,11 @@ while running:
             if event.key == pg.K_s:
                 if paused:
                     myGrid.step()
+                    steps+=1
     if not paused:
         myGrid.step()
+        steps+=1
     screen.blit(myGrid.getSurf(res),(0,0))
     pg.display.update()
+
+print(steps)
