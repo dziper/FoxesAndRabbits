@@ -6,6 +6,7 @@ class Rabbit(animal.Animal):
     BREEDING_AGE = 2
     BREEDING_PROB= .4
     COLOR = (255,200,0)
+    FOODVALUE= 1
 
     def __init__(self,pos,grid):
         super().__init__(pos,grid,self.__class__)

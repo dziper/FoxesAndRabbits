@@ -6,6 +6,7 @@ class Fox(predator.Predator):
     BREEDING_PROB = .6
     MAX_HUNGER = 5
     COLOR = (200,0,0)
+    FOODVALUE= 4
 
     def __init__(self,pos,grid):
         super().__init__(pos,grid,['R'])

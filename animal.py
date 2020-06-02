@@ -8,6 +8,7 @@ class Animal:
         self.age = 0
         self.dying = False
         self.type = type
+        
 
     def move(self):
         self.grid.remove(self)

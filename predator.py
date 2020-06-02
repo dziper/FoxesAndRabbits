@@ -22,6 +22,6 @@ class Predator(animal.Animal):
         prey=self.grid.getAdjacentAnimal(self.pos, self.prey)
         if prey != None:
             prey.die()
-            self.hunger = 0
+            self.hunger = self.hunger- prey.FOODVALUE
 
         #find a rabbit and kill it >;)
