@@ -2,11 +2,16 @@ import pygame as pg
 import random
 import copy
 import grid as g
+import rabbit, fox
+import matplotlib.pyplot as plt
+
 
 res = 5
 w = 200
 h = 200
 size = (w,h)
+rls=[]
+fls=[]
 
 pxw = w * res
 pxh = h * res
@@ -50,4 +55,9 @@ while running:
     screen.blit(myGrid.getSurf(res),(0,0))
     pg.display.update()
 
-print(steps)
+    rls.append(rabbit.Rcount)
+    plt.plot(rls, 'y')
+
+    fls.append(fox.Fcount)
+    plt.plot(fls, 'r')
+    plt.pause(0.01)

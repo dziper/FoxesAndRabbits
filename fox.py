@@ -1,4 +1,7 @@
 import predator
+
+Fcount=0
+
 class Fox(predator.Predator):
     MAX_AGE = 10
     NAME = "F"
@@ -8,5 +11,13 @@ class Fox(predator.Predator):
     COLOR = (200,0,0)
     FOODVALUE= 4
 
+
     def __init__(self,pos,grid):
         super().__init__(pos,grid,['R', 'E'])
+        global Fcount
+        Fcount += 1
+
+    def die(self):
+        super().die()
+        global Fcount
+        Fcount -= 1
