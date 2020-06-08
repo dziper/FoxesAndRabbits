@@ -1,4 +1,5 @@
 import predator
+Wcount=0
 class Wolf(predator.Predator):
     MAX_AGE = 10
     NAME = "W"
@@ -10,3 +11,10 @@ class Wolf(predator.Predator):
 
     def __init__(self,pos,grid):
         super().__init__(pos,grid,['F'])
+        global Wcount
+        Wcount += 1
+
+    def die(self):
+        super().die()
+        global Wcount
+        Wcount -= 1

@@ -2,7 +2,7 @@ import pygame as pg
 import random
 import copy
 import grid as g
-import rabbit, fox
+import rabbit, fox, wolf, bear, eagle
 import matplotlib.pyplot as plt
 
 
@@ -12,6 +12,9 @@ h = 200
 size = (w,h)
 rls=[]
 fls=[]
+wls=[]
+bls=[]
+els=[]
 
 pxw = w * res
 pxh = h * res
@@ -60,4 +63,16 @@ while running:
 
     fls.append(fox.Fcount)
     plt.plot(fls, 'r')
+
+
+    wls.append(wolf.Wcount)
+    plt.plot(wls, 'b')
+
+    bls.append(bear.Bcount)
+    plt.plot(bls, 'm')
+
+    els.append(eagle.Ecount)
+    plt.plot(els, 'g')
+
+
     plt.pause(0.01)
