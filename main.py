@@ -2,7 +2,7 @@ import pygame as pg
 import random
 import copy
 import grid as g
-import rabbit, fox, wolf, bear, eagle
+import rabbit, fox, wolf, bear, eagle, hunter
 import matplotlib.pyplot as plt
 
 
@@ -15,6 +15,7 @@ fls=[]
 wls=[]
 bls=[]
 els=[]
+hls=[]
 
 pxw = w * res
 pxh = h * res
@@ -30,7 +31,7 @@ clock = pg.time.Clock()
 
 myGrid = g.Grid(size)
 
-myGrid.initializeAnimals(fx = 200, rb = 400, wl=200, br=200, ea=200)
+myGrid.initializeAnimals(fx = 200, rb = 400, wl=200, br=200, ea=200, hu=0)
 
 paused = True
 running = True
@@ -52,6 +53,8 @@ while running:
                 if paused:
                     myGrid.step()
                     steps+=1
+    if steps==25:
+        myGrid.initializeAnimals(hu=150)
     if not paused:
         myGrid.step()
         steps+=1
@@ -73,6 +76,9 @@ while running:
 
     els.append(eagle.Ecount)
     plt.plot(els, 'g')
+
+    hls.append(hunter.Hcount)
+    plt.plot(hls, 'k')
 
 
     plt.pause(0.01)
