@@ -15,6 +15,7 @@ fls=[]
 wls=[]
 bls=[]
 els=[]
+n=100
 gen=0
 
 pxw = w * res
@@ -56,44 +57,44 @@ while running:
     if not paused:
         myGrid.step()
         steps+= 1
-        gen+= 0.01
+        gen+= 1/n
+        plt.clf()
+
+        if steps>=n:
+
+            rls.append(rabbit.Rcount)
+            plt.plot(rls[int((gen)*n-n): int((gen)*n)], 'y')
+
+            fls.append(fox.Fcount)
+            plt.plot(fls[int((gen)*n-n): int((gen)*n)], 'r')
+
+            wls.append(wolf.Wcount)
+            plt.plot(wls[int((gen)*n-n): int((gen)*n)], 'b')
+
+            bls.append(bear.Bcount)
+            plt.plot(bls[int((gen)*n-n): int((gen)*n)], 'm')
+
+            els.append(eagle.Ecount)
+            plt.plot(els[int((gen)*n-n): int((gen)*n)], 'g')
+        else:
+
+            rls.append(rabbit.Rcount)
+            plt.plot(rls, 'y')
+
+            fls.append(fox.Fcount)
+            plt.plot(fls, 'r')
+
+            wls.append(wolf.Wcount)
+            plt.plot(wls, 'b')
+
+            bls.append(bear.Bcount)
+            plt.plot(bls, 'm')
+
+            els.append(eagle.Ecount)
+            plt.plot(els, 'g')
+
+        plt.pause(0.01)
+
 
     screen.blit(myGrid.getSurf(res),(0,0))
     pg.display.update()
-
-    plt.clf()
-
-    if gen>=1:
-
-        rls.append(rabbit.Rcount)
-        plt.plot(rls[int((gen)*100-100): int((gen)*100)], 'y')
-
-        fls.append(fox.Fcount)
-        plt.plot(fls[int((gen)*100-100): int((gen)*100)], 'r')
-
-        wls.append(wolf.Wcount)
-        plt.plot(wls[int((gen)*100-100): int((gen)*100)], 'b')
-
-        bls.append(bear.Bcount)
-        plt.plot(bls[int((gen)*100-100): int((gen)*100)], 'm')
-
-        els.append(eagle.Ecount)
-        plt.plot(els[int((gen)*100-100): int((gen)*100)], 'g')
-    else:
-
-        rls.append(rabbit.Rcount)
-        plt.plot(rls, 'y')
-
-        fls.append(fox.Fcount)
-        plt.plot(fls, 'r')
-
-        wls.append(wolf.Wcount)
-        plt.plot(wls, 'b')
-
-        bls.append(bear.Bcount)
-        plt.plot(bls, 'm')
-
-        els.append(eagle.Ecount)
-        plt.plot(els, 'g')
-
-    plt.pause(0.01)
