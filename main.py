@@ -55,6 +55,7 @@ while running:
                     steps+=1
     if steps==25:
         myGrid.initializeAnimals(hu=150)
+
     if not paused:
         myGrid.step()
         steps+=1
