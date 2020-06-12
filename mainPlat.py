@@ -19,7 +19,7 @@ screen = pg.display.set_mode(pxsize)
 pg.display.set_caption('DropGame')
 clock = pg.time.Clock()
 
-myPlat = pl.Platform()
+myPlat = pl.Platform((0,0))
 
 paused=True
 running=True
@@ -40,3 +40,7 @@ while running:
                 pl.Platform.Left(self)
             if event.key == pg.K_SPACE:
                 paused= not paused
+
+    surf = pg.Surface((200,50))
+    surf.fill((0,100,0))
+    screen.blit(surf, myPlat.getPos())

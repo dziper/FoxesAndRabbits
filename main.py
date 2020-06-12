@@ -5,7 +5,6 @@ import grid as g
 import rabbit, fox, wolf, bear, eagle
 import matplotlib.pyplot as plt
 
-
 res = 5
 w = 200
 h = 200
